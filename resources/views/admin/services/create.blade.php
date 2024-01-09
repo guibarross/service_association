@@ -12,6 +12,10 @@
           <input type="text" class="form-control" name="title"  value="{{ old ('title') }}" >
         </div>
         <div class="form-group">
+          <label for="">Local do Serviço</label>
+          <input type="text" class="form-control" name="local"  value="{{ old ('local') }}" >
+        </div>
+        <div class="form-group">
           <label for="">Descrição do Serviço</label>
           <textarea class="form-control" name="description" rows="3">{{ old ('description') }}</textarea>
         </div>

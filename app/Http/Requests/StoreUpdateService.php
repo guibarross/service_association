@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Requests;
-
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreUpdateService extends FormRequest
@@ -22,22 +21,21 @@ class StoreUpdateService extends FormRequest
     public function rules(): array
     {
         $rules = [   
-                'title' => 'required|min:3|max:255|unique:services',
+                'title' => ['required|min:3|max:255'],
+
+                'local' => [
+                    'required',
+                    'min:3',
+                    'max:255',
+                ],
+
                 'description' => [
                     'required',
                     'min:3',
                     'max:10000',
                 ],
-            ];
 
-            if ($this->method()==='put') {
-                $rules ['title'] = [
-                    'required',
-                    'min:3',
-                    'max:255',
-                    "unique:services, title, {$this->id}, id",
-                ];
-            }
+            ];
 
         return $rules;
     }

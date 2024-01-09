@@ -9,7 +9,10 @@
                 </div>
                 <div class="card-body">
                     <p class="card-text">{{ $service->description }}</p>
-
+                </div>
+                <hr class="m-0">
+                <div class="card-body pb-0">
+                    <p class="card-text"><strong>Local: </strong>{{ $service->local }}</p>
                 </div>
                 <a href="" class="d-flex justify-content-end px-3 py-3" data-bs-toggle="tooltip" title="Visualizar">
                     <i class="bi bi-eye"></i>

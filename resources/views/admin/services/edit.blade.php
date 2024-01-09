@@ -14,13 +14,17 @@
           <input type="text" class="form-control" name="title" value="{{ $service->title }}">
         </div>
         <div class="form-group">
+          <label for="">Local do Serviço</label>
+          <input type="text" class="form-control" name="local" value="{{ $service->local }}">
+        </div>
+        <div class="form-group">
           <label for="">Descrição do Serviço</label>
           <textarea class="form-control" name="description" rows="3">{{ $service->description }}</textarea>
         </div>
         <button type="submit" class="btn btn-primary mb-3">Salvar</button>
         <div>
           @if ($errors->any())
-          @foreach ($errors->all() as $error )
+          @foreach ($errors->all() as $error)
               {{ $error }}
           @endforeach   
           @endif
