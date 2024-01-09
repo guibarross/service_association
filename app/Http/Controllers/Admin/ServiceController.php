@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\StoreUpdateService;
 use App\Http\Controllers\Controller;
+
 use App\Models\Service;
 use Illuminate\Http\Request;
 
@@ -31,9 +33,9 @@ class ServiceController extends Controller
         return view('admin\services\create');
     }
 
-    public function store(Request $request, Service $service)
+    public function store(StoreUpdateService $request, Service $service)
     {
-        $data = $request->all();
+        $data = $request->validated();
 
         $service = $service->create($data);
 
@@ -49,15 +51,13 @@ class ServiceController extends Controller
         return view ('admin.services.edit', compact('service'));
     }
 
-    public function update(Request $request, Service $service, string $id)
+    public function update(StoreUpdateService $request, Service $service, string $id)
     {
         if (!$service = $service->find($id)) {
             return back();
         }
 
-        $service->update($request->only([
-            'title', 'description'
-        ]));
+        $service->update($request->validated());
 
         return redirect()->route('services.index');
     }
