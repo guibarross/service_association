@@ -9,14 +9,14 @@
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
                 </form>
-                <a class="btn btn-primary my-2 mx-2 my-sm-0" href="{{ route('services.create') }}" target="_blank">Adicionar Serviço</a>
+                <a class="btn btn-primary my-2 mx-2 my-sm-0" href="{{ route('services.create') }}">Adicionar Serviço</a>
             </div>
 
             <hr>
 
             <div class="d-flex flex-wrap justify-content-start mt-5">
                 @foreach ($services as $service)
-                    <div class="card bg-light mb-3 mx-2" style="max-width: 18rem;">
+                    <div class="card mb-3 mx-2 shadow" style="max-width: 18rem;">
                         <div class="card-header">
                             <h5 class="card-title mb-0">{{ $service->title }}</h5>
                         </div>
