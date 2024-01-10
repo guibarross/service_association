@@ -21,20 +21,11 @@ class StoreUpdateService extends FormRequest
     public function rules(): array
     {
         $rules = [   
-                'title' => ['required|min:3|max:255'],
+                'title' => ['required','min:3','max:255'],
 
-                'local' => [
-                    'required',
-                    'min:3',
-                    'max:255',
-                ],
+                'local' => ['required','min:3','max:255'],
 
-                'description' => [
-                    'required',
-                    'min:3',
-                    'max:10000',
-                ],
-
+                'description' => ['required','min:3','max:10000'],
             ];
 
         return $rules;
