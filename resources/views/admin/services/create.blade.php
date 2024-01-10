@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container shadow rounded ">
+<div class="container shadow rounded mt-5 mb-5 col-md-6">
     <h4 class="pt-3 px-3">Cadastrar novo serviço</h4>
     <hr>
 <form class="mb-3 py-3 px-3" action="{{ route ('services.store') }}" method="post">  

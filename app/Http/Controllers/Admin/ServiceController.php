@@ -39,7 +39,7 @@ class ServiceController extends Controller
 
         $service = $service->create($data);
 
-        return redirect()->route('services.index');
+        return redirect()->route('services.index')->with('msg', 'Serviço cadastrado com sucesso!');
     }
 
     public function edit(Service $service, string | int $id)
@@ -59,7 +59,7 @@ class ServiceController extends Controller
 
         $service->update($request->validated());
 
-        return redirect()->route('services.index');
+        return redirect()->route('services.index')->with('msg', 'Serviço editado com sucesso!');;
     }
 
     public function destroy(string | int $id)
@@ -70,6 +70,6 @@ class ServiceController extends Controller
 
         $service->delete();
 
-        return redirect()->route('services.index');
+        return redirect()->route('services.index')->with('msg', 'Serviço excluido com sucesso!');
     }
 }
