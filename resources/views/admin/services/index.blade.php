@@ -9,8 +9,10 @@
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
                 </form>
+                @if (auth()->check() && auth()->user()->is_admin === 1)
                 <a class="btn btn-primary my-2 mx-2 my-sm-0" href="{{ route('services.create') }}">Adicionar Serviço</a>
             </div>
+            @endif
 
             <hr>
 

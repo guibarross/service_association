@@ -30,7 +30,14 @@ class ServiceController extends Controller
 
     public function create()
     {
-        return view('admin\services\create');
+            if (auth()->user()->is_admin === 1) {
+                return view('admin\services\create');
+            }
+    
+            else {
+                abort(401, 'Acesso não autorizado.');
+            }
+
     }
 
     public function store(StoreUpdateService $request, Service $service)
@@ -44,32 +51,52 @@ class ServiceController extends Controller
 
     public function edit(Service $service, string | int $id)
     {
+        // Verificar se o usuário é administrador
+        if (auth()->user()->is_admin != 1) {
+            abort(401, 'Acesso não autorizado.');
+        }
+    
         if (!$service = $service->where('id', $id)->first()) {
             return back();
-        };
-
-        return view ('admin.services.edit', compact('service'));
+        }
+    
+        return view('admin.services.edit', compact('service'));
     }
+    
 
     public function update(StoreUpdateService $request, Service $service, string $id)
-    {
-        if (!$service = $service->find($id)) {
-            return back();
-        }
-
-        $service->update($request->validated());
-
-        return redirect()->route('services.index')->with('msg', 'Serviço editado com sucesso!');;
+{
+    // Verificar se o usuário é administrador
+    if (auth()->user()->is_admin != 1) {
+        abort(401, 'Acesso não autorizado.');
     }
+
+    if (!$service = $service->find($id)) {
+        return back();
+    }
+
+    $service->update($request->validated());
+
+    return redirect()->route('services.index')->with('msg', 'Serviço editado com sucesso!');
+}
+
 
     public function destroy(string | int $id)
     {
+        $service = Service::findOrFail($id);
+
+        if (auth()->user()->is_admin === 1) {
+            $service->delete();
+            return redirect()->route('services.index')->with('msg', 'Serviço excluido com sucesso!');
+        }
+
+        else {
+            abort(401, 'Acesso não autorizado.');
+        }
+
         if (!$service = Service::find($id)) {
             return back();
         }
-
-        $service->delete();
-
-        return redirect()->route('services.index')->with('msg', 'Serviço excluido com sucesso!');
     }
+
 }
