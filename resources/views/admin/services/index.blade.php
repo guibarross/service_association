@@ -1,8 +1,8 @@
 @extends('layouts.layout')
 
 @section('content')
-    <div class="card mx-5 my-5 border-0 rounded shadow-lg">
-            <div class="card-header pb-4">
+    <div class="card mx-5 my-5 border-0 roundeed shadow-lg">
+            <div class="card-header shadow pb-4">
             <h4 class="text-secondary mr-3 mx-2">Serviços</h4>
             <div class="d-flex justify-content-between mx-2">
                 <form class="form-inline">
@@ -18,7 +18,7 @@
         <div class="card-body">
             <div class="d-flex flex-wrap justify-content-start mt-5">
                 @foreach ($services as $service)
-                    <div class="card mb-3 mx-2 shadow" style="max-width: 18rem;">
+                    <div class="card mb-3 mx-2 shadow border-0 roundeed" style="max-width: 20rem;">
                         <div class="card-header">
                             <h5 class="card-title mb-0">{{ $service->title }}</h5>
                         </div>
@@ -30,7 +30,7 @@
                             <p class="card-text"><strong>Local: </strong>{{ $service->local }}</p>
                         </div>
 
-                        <a href="{{ route('services.show', $service->id) }}" class="d-flex justify-content-end px-3 py-3"
+                        <a href="{{ route('services.show', $service->id) }}" class="d-flex justify-content-end px-3 pb-3"
                             data-bs-toggle="tooltip" title="Visualizar">
                             <i class="bi bi-eye"></i>
                         </a>
