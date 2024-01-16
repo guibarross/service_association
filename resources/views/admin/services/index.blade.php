@@ -1,9 +1,9 @@
 @extends('layouts.layout')
 
 @section('content')
-    <div class="card mx-5 my-5 border-0 roundeed shadow-lg">
+    <div class="card mx-5 my-5 border-0 rounded shadow-lg">
             <div class="card-header shadow pb-4">
-            <h4 class="text-secondary mr-3 mx-2">Serviços</h4>
+            <h3 class="mr-3 mx-2 pb-2">Serviços</h3>
             <div class="d-flex justify-content-between mx-2">
                 <form class="form-inline">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

@@ -8,6 +8,9 @@
             <div class="navbar-nav">
                 @auth
                     <a class="nav-link text-white" href="{{ route('services.index') }}">Serviços</a>
+                    @if (auth()->check() && auth()->user()->is_admin =! 1)
+                    <a class="nav-link text-white" href="{{ route('user.services')  }}">Serviços Associados</a>   
+                    @endif
                     <a class="nav-link text-white" href="/user/profile">Meu Perfil</a>
                     <form action="/logout" method="post">
                         @csrf

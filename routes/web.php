@@ -11,6 +11,10 @@ Route::get('/services/{id}', [ServiceController::class, 'show'])->name('services
 Route::get('/', [ServiceController::class, 'index'])->name('services.index')->middleware('auth');
 Route::post('/service', [ServiceController::class, 'store'])->name('services.store')->middleware('auth');
 
+Route::post('services/{id}/associate', [ServiceController::class, 'associateUser'])->name('services.associate')->middleware('auth');
+Route::get('user-services', [ServiceController::class, 'userServices'])->name('user.services')->middleware('auth');
+Route::post('services/{id}/disassociation', [ServiceController::class, 'disassociationUser'])->name('services.disassociation')->middleware('auth');
+Route::get('/user-associated/{serviceId}', [ServiceController::class, 'userAssociated'])->name('user.associated')->middleware('auth');
 
 Route::middleware([
     'auth:sanctum',

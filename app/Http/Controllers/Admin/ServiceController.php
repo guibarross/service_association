@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\StoreUpdateService;
 use App\Http\Controllers\Controller;
-
 use App\Models\Service;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -30,14 +30,11 @@ class ServiceController extends Controller
 
     public function create()
     {
-            if (auth()->user()->is_admin === 1) {
-                return view('admin\services\create');
-            }
-    
-            else {
-                abort(401, 'Acesso não autorizado.');
-            }
-
+        if (auth()->user()->is_admin === 1) {
+            return view('admin\services\create');
+        } else {
+            abort(401, 'Acesso não autorizado.');
+        }
     }
 
     public function store(StoreUpdateService $request, Service $service)
@@ -55,30 +52,30 @@ class ServiceController extends Controller
         if (auth()->user()->is_admin != 1) {
             abort(401, 'Acesso não autorizado.');
         }
-    
+
         if (!$service = $service->where('id', $id)->first()) {
             return back();
         }
-    
+
         return view('admin.services.edit', compact('service'));
     }
-    
+
 
     public function update(StoreUpdateService $request, Service $service, string $id)
-{
-    // Verificar se o usuário é administrador
-    if (auth()->user()->is_admin != 1) {
-        abort(401, 'Acesso não autorizado.');
+    {
+        // Verificar se o usuário é administrador
+        if (auth()->user()->is_admin != 1) {
+            abort(401, 'Acesso não autorizado.');
+        }
+
+        if (!$service = $service->find($id)) {
+            return back();
+        }
+
+        $service->update($request->validated());
+
+        return redirect()->route('services.index')->with('msg', 'Serviço editado com sucesso!');
     }
-
-    if (!$service = $service->find($id)) {
-        return back();
-    }
-
-    $service->update($request->validated());
-
-    return redirect()->route('services.index')->with('msg', 'Serviço editado com sucesso!');
-}
 
 
     public function destroy(string | int $id)
@@ -88,9 +85,7 @@ class ServiceController extends Controller
         if (auth()->user()->is_admin === 1) {
             $service->delete();
             return redirect()->route('services.index')->with('msg', 'Serviço excluido com sucesso!');
-        }
-
-        else {
+        } else {
             abort(401, 'Acesso não autorizado.');
         }
 
@@ -99,4 +94,67 @@ class ServiceController extends Controller
         }
     }
 
+    public function associateUser(Service $service, $id)
+    {
+
+        $user = auth()->user();
+
+        if (auth()->user()->is_admin === 1) {
+            abort(401, 'Acesso não autorizado.');
+        }
+
+        $service = $service->findOrFail($id);
+
+        if ($user->associatedServices->contains($service)) {
+            return redirect()->route('services.show', ['id' => $service->id])->with('msg', 'Este serviço já foi associado.');
+        }
+
+        $user->associatedServices()->attach($service);
+
+        return redirect()->route('user.services', compact('user'))->with('msg', 'Serviço associado com sucesso!');
+    }
+
+
+    public function userServices(User $user)
+    {
+
+        $user = auth()->user();
+
+        // Recupere os serviços associados ao usuário
+        $services = $user->associatedServices;
+
+        return view('admin.services.user-services', compact('services', 'user'));
+    }
+
+    public function disassociationUser(Service $service, $id)
+    {
+
+        $user = auth()->user();
+
+        if (auth()->user()->is_admin === 1) {
+            abort(401, 'Acesso não autorizado.');
+        }
+
+        $service = $service->findOrFail($id);
+
+        $user->associatedServices()->detach($service);
+
+        return redirect()->route('user.services', compact('user'))->with('msg', 'Serviço desassociado com sucesso!');
+    }
+    
+
+    public function userAssociated($serviceId)
+    {
+        $service = Service::findOrFail($serviceId);
+
+        // Verifique se o usuário é administrador
+        if (auth()->user()->is_admin !== 1) {
+            abort(401, 'Acesso não autorizado.');
+        }
+
+        // Recupere os usuários associados a este serviço
+        $users = $service->users;
+
+        return view('admin.services.user-associated', compact('users', 'service'));
+    }
 }
