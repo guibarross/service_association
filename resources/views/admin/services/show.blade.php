@@ -3,7 +3,7 @@
 @section('content')
     <div class="container shadow rounded my-5 px-0">
         <div class="card-header shadow border-0">
-            <h3>Detalhes do Serviço</h3>
+            <h4>Detalhes do Serviço</h4>
         </div>
         <div class="d-flex justify-content-center my-5 mx-3">
             <div class="mt-4 mb-5">
@@ -16,7 +16,7 @@
                     </div>
                     <hr class="m-0">
                     <div class="card-body">
-                        <p class="card-text"><strong>Local: </strong>{{ $service->local }}</p>
+                        <p class="card-text"><i class="bi bi-geo-alt"></i> {{ $service->local }}</p>
                     </div>
                 </div>
 

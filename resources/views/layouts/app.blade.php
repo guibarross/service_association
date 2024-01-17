@@ -23,30 +23,20 @@
 
 @section('content')
 
-    <body class="font-sans antialiased">
-        <x-banner />
-
-        <div class="min-h-screen bg-gray-100">
-
-
+<div class="container my-5 rounded shadow-lg px-0">
+        <div class="card-header shadow border-0 py-3">
             <!-- Profile Content -->
-            {{-- @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif --}}
-
-            <main>
-                {{ $slot }}
-            </main>
+            <h4 class="m-0">Perfil do Usuário</h4>
         </div>
 
-        @stack('modals')
+        <div class="card-body">
+            {{ $slot }}
+        </div>
 
-        @livewireScripts
-    </body>
+        @stack('modals')  
+    </div>
+
+    @livewireScripts
 @endsection
 
 </html>

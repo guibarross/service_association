@@ -141,7 +141,7 @@ class ServiceController extends Controller
 
         return redirect()->route('user.services', compact('user'))->with('msg', 'Serviço desassociado com sucesso!');
     }
-    
+
 
     public function userAssociated($serviceId)
     {
@@ -156,5 +156,18 @@ class ServiceController extends Controller
         $users = $service->users;
 
         return view('admin.services.user-associated', compact('users', 'service'));
+    }
+
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $services = Service::where('title', 'LIKE', "%$query%")
+            ->orWhere('description', 'LIKE', "%$query%")
+            ->orWhere('local', 'LIKE', "%$query%")
+            ->get();
+
+        return view('admin.services.index', compact('services'));
     }
 }

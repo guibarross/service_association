@@ -19,7 +19,8 @@
           <label for="">Descrição do Serviço</label>
           <textarea class="form-control" name="description" rows="3">{{ old ('description') }}</textarea>
         </div>
-        <button type="submit" class="btn btn-primary mb-3">Cadastrar</button>
+        <div class="d-flex justify-content-end"><button type="submit" class="btn btn-primary mb-3">Cadastrar</button></div>
+       
         <div>
         @if ($errors->any())
         @foreach ($errors->all() as $error )
