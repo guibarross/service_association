@@ -3,7 +3,9 @@
 @section('content')
 <div>
 
-   {{-- <div class="container-fluid img-fluid" style="background-image: url('{{ asset('images/banner-home.jpg') }}'); background-size: cover; height: 400px;"></div> --}} 
+    <div>
+        <img class="img-fluid" src="{{ asset('images/banner.jpg') }}" alt="">
+    </div>
     
     <div class="mx-5 my-5 border-0 rounded shadow-lg">
             <div class="card-header shadow pb-4">
