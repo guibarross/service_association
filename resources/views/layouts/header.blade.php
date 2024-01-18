@@ -1,8 +1,8 @@
 <div class="card-header bg-primary shadow p-3 border-0">
     <nav class="navbar navbar-expand-lg d-flex justify-content-between">
         <div>
-            <a class="navbar-brand text-white" href="{{ route('services.index') }}">
-                Service Association
+            <a class="navbar-brand text-white py-0 my-0" href="{{ route('services.index') }}">
+                <img class="img-fluid" src="{{ asset('images/logo.png') }}" alt="Logo"> Service Association
             </a>
         </div>
         <button class="navbar-toggler border" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
