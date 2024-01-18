@@ -23,7 +23,7 @@
             @if ($services->isEmpty())
                 <p>Nenhum resultado encontrado.</p>
                 @else
-            <div class="d-flex flex-wrap my-3 row">
+            <div class="d-flex flex-wrap mt-3 mb-4 row">
                 @foreach ($services as $service)
                 <div class="col-md-4 col-sm-12 d-flex">
                     <div class="card mt-4 mb-3 mx-2 shadow border-0 roundeed" style="max-width: 23rem;">
@@ -31,7 +31,7 @@
                             <h5 class="card-title mb-0 text-center">{{ $service->title }}</h5>
                         </div>
                         <div class="card-body">
-                            <p class="card-text">{{ $service->description }}</p>
+                            <p class="card-text">{{ Str::limit($service->description, '40') }}</p>
                         </div>
                         <hr class="m-0">
                         <div class="card-body pb-0">
@@ -47,7 +47,10 @@
                 @endforeach
             </div>
             @endif
-
+            <hr>
+            <div class="row d-flex justify-content-end pt-3 pr-5">
+                {{ $services->links() }}
+            </div>
         </div>
     </div>
 </div>

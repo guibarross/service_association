@@ -24,11 +24,11 @@
                         <tbody>
                             <tr>
                                 <td><a href="{{ route('services.show', $service->id) }}">{{ $service->title }}</a></td>
-                                <td>{{ $service->description }}</td>
+                                <td>{{ Str::limit($service->description, '40') }}</td>
                                 <td>{{ $service->local }}</td>
                                 <form action="{{ route('services.disassociation', ['id' => $service->id]) }}" method="post">
                                     @csrf
-                                <td><button type="submit" class="btn btn-danger delete-btn"><i class="bi bi-trash3"></i>Desassociar</button></td>
+                                <td><button type="submit" class="btn btn-danger delete-btn"><i class="bi bi-trash3"></i> Desassociar</button></td>
                                 </form>
                             </tr>
                         </tbody>

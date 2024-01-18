@@ -8,11 +8,12 @@ use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+
 class ServiceController extends Controller
 {
     public function index(Service $service)
     {
-        $services = $service->all();
+        $services = $service::paginate(6);
 
 
         return view('admin\services\index', compact('services'));
