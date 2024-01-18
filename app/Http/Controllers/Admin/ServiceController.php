@@ -13,7 +13,7 @@ class ServiceController extends Controller
 {
     public function index(Service $service)
     {
-        $services = $service::paginate(6);
+        $services = $service::paginate(8);
 
 
         return view('admin\services\index', compact('services'));

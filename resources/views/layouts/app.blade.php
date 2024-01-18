@@ -23,8 +23,8 @@
 
 @section('content')
 
-<div class="container my-5 rounded shadow-lg px-0">
-        <div class="card-header shadow border-0 py-3">
+<div class="container my-5 rounded shadow px-0">
+    <div class="card-header bg-transparent shadow-sm border-0 py-3">
             <!-- Profile Content -->
             <h4 class="m-0">Perfil do Usuário</h4>
         </div>
