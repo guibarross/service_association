@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container shadow rounded my-5 px-0">
-        <div class="card-header shadow border-0">
+        <div class="card-header bg-transparent shadow-sm border-0">
             <h4>Detalhes do Serviço</h4>
         </div>
         <div class="d-flex justify-content-center my-5 mx-3">

@@ -4,7 +4,7 @@
 
 
 <div class="container shadow rounded px-0 my-5">
-  <div class="card-header mb-2">
+  <div class="card-header bg-transparent shadow-sm mb-2">
     <h4 class="pt-3 ">Cadastrar novo serviço</h4>
   </div>
 <form class="mb-3 py-4 px-4" action="{{ route ('services.update', $service->id) }}" method="post">  
