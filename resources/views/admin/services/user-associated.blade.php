@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container my-5 rounded shadow-lg px-0">
-        <div class="card-header shadow border-0">
+        <div class="card-header bg-transparent shadow-sm border-0 py-3">
             <h3>Usuários Associados:</h3>
             <h5><a href="{{ route('services.show', $service->id) }}">{{ $service->title }}</a></h5>
         </div>

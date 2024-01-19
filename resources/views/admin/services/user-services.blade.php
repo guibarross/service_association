@@ -2,21 +2,21 @@
 
 @section('content')
 
-    <div class="container my-5 rounded shadow-lg px-0">
-        <div class="card-header shadow border-0">
-            <h3>Serviços Associados</h3>
+<div class=" my-5 mx-sm-5 border-0 rounded shadow-lg">
+        <div class="card-header bg-transparent shadow-sm border-0 py-3">
+            <h4 class="mb-0">Serviços Associados</h4>
         </div>
 
-        <div class="py-5 mx-4">
+        <div class="py-5 mx-5">
             @if ($services->isEmpty())
                 <p>Você não está associado a nenhum serviço no momento, acesse <a href="{{ route('services.index') }}">aqui</a> os serviços disoiníveis.</p>
             @else
+            
+            <div class="container col-sm-6 pt-3">
                 <table class="table border">
                     <thead class="thead-light">
                         <tr>
                             <th scope="col">Serviço</th>
-                            <th scope="col">Descrição</th>
-                            <th scope="col">Local</th>
                             <th scope="col">Ação</th>
                         </tr>
                     </thead>
@@ -24,16 +24,17 @@
                         <tbody>
                             <tr>
                                 <td><a href="{{ route('services.show', $service->id) }}">{{ $service->title }}</a></td>
-                                <td>{{ Str::limit($service->description, '40') }}</td>
-                                <td>{{ $service->local }}</td>
+                                <td>
                                 <form action="{{ route('services.disassociation', ['id' => $service->id]) }}" method="post">
                                     @csrf
-                                <td><button type="submit" class="btn btn-danger delete-btn"><i class="bi bi-trash3"></i> Desassociar</button></td>
+                                <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash3"></i> Desassociar</button>
                                 </form>
+                            </td>
                             </tr>
                         </tbody>
                     @endforeach
                 </table>
+                </div>
             @endif
         </div>
     </div>

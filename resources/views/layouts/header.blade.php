@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg d-flex justify-content-between">
         <div>
             <a class="navbar-brand text-white py-0 my-0" href="{{ route('services.index') }}">
-                <img class="img-fluid" src="{{ asset('images/logo.png') }}" alt="Logo"> Service Association
+                <img class="img-fluid" src="{{ asset('images/logo.png') }}" alt="Logo"> 
             </a>
         </div>
         <button class="navbar-toggler border" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
