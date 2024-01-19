@@ -20,10 +20,10 @@
                 </div>
 
                 <div class="mt-4 mt-sm-3 d-flex d-sm-block justify-content-center row">
-                    <form action="{{ route('services.search') }}" method="get" class="">
+                    <form action="{{ route('services.search') }}" method="get">
                         <div class="d-flex col-sm-4">
                             <input class="form-control mr-2" type="search" name="query"
-                                placeholder="Pesquisar serviço..." aria-label="Pesquisar">
+                                placeholder="Pesquisar serviço..." aria-label="Pesquisar" value="{{ $query ?? '' }}">
                             <button class="btn btn-outline-primary my-sm-0" type="submit"><i
                                     class="bi bi-search"></i></button>
                         </div>
@@ -32,7 +32,11 @@
             </div>
 
             <div class="card-body">
-                @if ($services->isEmpty())
+                @if (isset($query))
+                    <p>Resultados da busca para <strong> "{{ $query }}":</strong></p>
+                @endif
+
+                @if ($services->isEmpty() && empty($query))
                     <p>Nenhum resultado encontrado.</p>
                 @else
                     <div class="d-flex mt-3 mb-4 row">
@@ -61,9 +65,12 @@
                     </div>
                 @endif
                 <hr>
-                <div class="row d-flex justify-content-end pt-3 pr-5">
-                    {{ $services->links() }}
-                </div>
+                @if ($services instanceof \Illuminate\Pagination\LengthAwarePaginator)
+                    <div class="row d-flex justify-content-end pt-3 pr-5">
+                        {{ $services->links() }}
+                    </div>
+                @endif
+
             </div>
         </div>
     </div>

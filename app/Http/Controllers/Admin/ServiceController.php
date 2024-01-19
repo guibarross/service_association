@@ -13,7 +13,7 @@ class ServiceController extends Controller
 {
     public function index(Service $service)
     {
-        $services = $service::paginate(8);
+        $services = $service::paginate(6);
 
 
         return view('admin\services\index', compact('services'));
@@ -163,12 +163,17 @@ class ServiceController extends Controller
     public function search(Request $request)
     {
         $query = $request->input('query');
-
-        $services = Service::where('title', 'LIKE', "%$query%")
-            ->orWhere('description', 'LIKE', "%$query%")
-            ->orWhere('local', 'LIKE', "%$query%")
-            ->get();
-
-        return view('admin.services.index', compact('services'));
+    
+        $services = Service::query();
+    
+        if ($query) {
+            $services = $services->where('title', 'LIKE', "%$query%")
+                                ->orWhere('description', 'LIKE', "%$query%")
+                                ->orWhere('local', 'LIKE', "%$query%");
+        }
+    
+        $services = $services->get();
+    
+        return view('admin.services.index', compact('services', 'query'));
     }
 }
