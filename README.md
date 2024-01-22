@@ -28,15 +28,15 @@ Siga as etapas abaixo para configurar e executar o Service Association em seu am
    cd (caminho local da pasta que armazena o projeto)
 
     Execute os seguintes comandos:
-   *     npm install
-   *      composer install
+   ```bash
+    npm install
+    composer install
 
-4. **Compilação e Execução:**
-   Para compliar os arquivos front-end execute o comando abaixo no terminal:
-   *     npm run dev
-     
-   Para iniciar o servidor Laravel execute o comando abaixo no terminal:
-   *     php artisan serve
+5. **Compilação e Execução:**
+   Para compliar os arquivos front-end e iniciar o servidor Laravel, execute os comandos abaixo no terminal:
+   ```bash
+   npm run dev
+   php artisan serve
 
 **Após realizar estes passos, a aplicação estará disponível em http://localhost:8000. Certifique-se de ajustar a porta conforme necessário.**    
 
