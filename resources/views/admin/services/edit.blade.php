@@ -5,7 +5,7 @@
 
 <div class="container shadow rounded px-0 my-5">
   <div class="card-header bg-transparent shadow-sm mb-2">
-    <h4 class="pt-3 ">Cadastrar novo serviço</h4>
+    <h4 class="mb-0 py-2">Editar serviço</h4>
   </div>
 <form class="mb-3 py-4 px-4" action="{{ route ('services.update', $service->id) }}" method="post">  
     @csrf
@@ -22,7 +22,7 @@
           <label for="">Descrição do Serviço</label>
           <textarea class="form-control" name="description" rows="3">{{ $service->description }}</textarea>
         </div>
-        <div class="d-flex justify-content-end">
+        <div class="d-flex justify-content-end pt-3">
         <button type="submit" class="btn btn-primary mb-3">Salvar</button>
       </div>
         <div>

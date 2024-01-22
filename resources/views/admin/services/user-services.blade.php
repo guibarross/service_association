@@ -2,12 +2,12 @@
 
 @section('content')
 
-<div class=" my-5 mx-sm-5 border-0 rounded shadow-lg">
+<div class="my-5 mx-md-5 border-0 rounded shadow-lg">
         <div class="card-header bg-transparent shadow-sm border-0 py-3">
-            <h4 class="mb-0">Serviços Associados</h4>
+            <h4 class="mb-0 py-2">Serviços Associados</h4>
         </div>
 
-        <div class="py-5 mx-5">
+        <div class="py-5">
             @if ($services->isEmpty())
                 <p>Você não está associado a nenhum serviço no momento, acesse <a href="{{ route('services.index') }}">aqui</a> os serviços disoiníveis.</p>
             @else

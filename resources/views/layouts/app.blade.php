@@ -26,7 +26,7 @@
 <div class="my-5 mx-sm-5 border-0 rounded shadow-lg">
     <div class="card-header bg-transparent shadow-sm border-0 py-3">
             <!-- Profile Content -->
-            <h4 class="m-0">Perfil do Usuário</h4>
+            <h4 class="m-0 py-2">Perfil do Usuário</h4>
         </div>
 
         <div class="card-body">

@@ -2,10 +2,11 @@
 
 @section('content')
 
-<div class="container shadow rounded mt-5 mb-5 col-md-6">
-    <h4 class="pt-3 px-3">Cadastrar novo serviço</h4>
-    <hr>
-<form class="mb-3 py-3 px-3" action="{{ route ('services.store') }}" method="post">  
+<div class="container shadow rounded px-0 mt-5 mb-5 col-md-6">
+  <div class="card-header bg-transparent shadow-sm border-0"> <h4 class="mb-0 py-2">Cadastrar novo serviço</h4>
+  </div>
+    
+<form class="mb-3 py-4 px-4" action="{{ route ('services.store') }}" method="post">  
     @csrf
         <div class="form-group">
           <label for="">Tipo de Serviço</label>

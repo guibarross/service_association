@@ -5,10 +5,10 @@
         <div class="card-header bg-transparent shadow-sm border-0">
             <h4>Detalhes do Serviço</h4>
         </div>
-        <div class="d-flex justify-content-center my-5 mx-3">
+        <div class="d-flex justify-content-center my-4 mx-3">
             <div class="mt-4 mb-5">
-                <div class="card border-0 shadow rounded  mb-3" style="max-width: 30rem;">
-                    <div class="card-header text-center">
+                <div class="card border-0 shadow rounded mb-3" style="max-width: 30rem;">
+                    <div class="card-header text-center py-3">
                         <h5 class="card-title mb-0">{{ $service->title }}</h5>
                     </div>
                     <div class="card-body">
@@ -30,12 +30,22 @@
                     </form>
                 @endif
 
-                <div class="d-flex">
+                <div class="d-md-flex justify-content-between">
+                    @if (auth()->check() && auth()->user()->is_admin === 1)
+                        <div class="mr-md-2">
+                            <a href="{{ route('user.associated', ['serviceId' => $service->id]) }}"
+                                class="btn btn-outline-primary btn-block py-0 mt-2 mr-2">Usuários associados</a>
+                        </div>
+                        <div class="mr-md-2">
+                            <a href="{{ route('services.edit', $service->id) }}"
+                                class="btn btn-outline-primary btn-block py-0 mt-2 mr-2">Editar serviço</a>
+                        </div>
+                    @endif
                     <form action="{{ route('services.destroy', $service->id) }}" method="post">
                         @csrf
                         @method('delete')
                         @if (auth()->check() && auth()->user()->is_admin === 1)
-                            <button type="button" class="btn btn-outline-primary py-0 mt-2 mr-2"
+                            <button type="button" class="btn btn-outline-danger btn-block py-0 mt-2 mr-2"
                                 onclick="confirmDelete()">Excluir serviço</button>
 
                             <!-- Modal de confirmação -->
@@ -55,7 +65,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-dismiss="modal">Cancelar</button>
-                                            <button type="submit" class="btn btn-primary"
+                                            <button type="submit" class="btn btn-danger"
                                                 onclick="submitDeleteForm()">Confirmar</button>
                                         </div>
                                     </div>
@@ -63,12 +73,6 @@
                             </div>
                         @endif
                     </form>
-
-                    @if (auth()->check() && auth()->user()->is_admin === 1)
-                        <a href="{{ route('services.edit', $service->id) }}"
-                            class="btn btn-outline-primary py-0 mt-2 mr-2">Editar serviço</a>
-                            <a href="{{ route('user.associated', ['serviceId' => $service->id]) }}" class="btn btn-outline-primary py-0 mt-2 mr-2">Usuários associados</a>
-                    @endif
                 </div>
 
             </div>

@@ -9,6 +9,11 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
+            <div class="text-center mb-4">
+                <h4 class="text-secondary">Cadastrar</h4>
+             </div>
+
+
             <div>
                 <x-label for="name" value="{{ __('Name') }}" />
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
@@ -46,12 +51,13 @@
                 </div>
             @endif
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="text-center mt-4 mb-3">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
                 </a>
-
-                <x-button class="ms-4">
+            </div>
+            <div class="mt-3 d-flex justify-content-center">      
+                <x-button>
                     {{ __('Register') }}
                 </x-button>
             </div>
