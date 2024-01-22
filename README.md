@@ -1,66 +1,60 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Service Association
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Documentação de Instalação e Configuração
 
-## About Laravel
+### Pré-requisitos:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Antes de iniciar a instalação do Service Association, certifique-se de que seu ambiente atenda aos seguintes pré-requisitos:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1. **PHP:** Garanta que o PHP esteja instalado e configurado nas variáveis de sistema.
+2. **Composer:** Certifique-se de ter o Composer instalado em seu sistema.
+3. **Git:** Tenha o Git instalado para clonar o repositório.
+4. **Node.js:** Instale o Node.js, preferencialmente na versão LTS.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Instalação:
 
-## Learning Laravel
+Siga as etapas abaixo para configurar e executar o Service Association em seu ambiente local:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. **Clone o Repositório:**
+   ```bash
+   git clone https://github.com/seu-usuario/service-association.git
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+2. **Crie o Banco de Dados:**
+   - Execute o banco de dados local para o projeto, garantindo que ele esteja vazio.
+   - Configure o arquivo .env com o nome do banco de dados criado anteriormente.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+3. **Instale as Dependências:**
+   - Acesse a pasta do projeto no terminal:
+   cd (caminho local da pasta que armazena o projeto)
 
-## Laravel Sponsors
+   -Execute os seguintes comandos:
+   npm install
+   composer install
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+4. **Compilação e Execução:**
+   - Para compliar os ativos front-end execute o comando abaixo no terminal:
+     npm run dev
+     
+   - Para iniciar o servidor Laravel execute o comando abaixo no terminal:
+     php artisan serve
 
-### Premium Partners
+**Após realizar estes passos, a aplicação estará disponível em http://localhost:8000. Certifique-se de ajustar a porta conforme necessário.**    
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### Controle de Perfis:
 
-## Contributing
+O **Service Association** possui um sistema de controle de perfis, no qual os usuários administradores são identificados pelo valor **'1'** na coluna **'is_admin'** da tabela **'users'**. Para tornar um usuário administrador, basta alterar o valor da coluna **'is_admin'** no banco de dados da tabela **'users'**.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Recursos Principais:
+O **Service Association** oferece diversos recursos, incluindo:
 
-## Code of Conduct
+- **Diversidade de Serviços:** Uma ampla gama de serviços em diferentes setores.
+- **Associação Simples:** Facilidade para os usuários se associarem aos serviços desejados.
+- **Gerenciamento de Associações:** Interface intuitiva para que os usuários possam gerenciar suas associações.
+- **Controle de Perfis:** Sistema de controle de perfis, com usuários administradores e operacionais.
+- **Layout Responsivo:** Todo o sistema foi desenvolvido para se adaptar a diferentes dispositivos e telas.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+ ### Tecnologias Utilizadas:
+- O projeto é desenvolvido em **Laravel**, aproveitando sua robustez e facilidade de manutenção. Adotamos boas práticas de desenvolvimento para garantir segurança e desempenho. Para estilização das telas, foi utilizado o framework Bootstrap.
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+   
