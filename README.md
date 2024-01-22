@@ -20,22 +20,22 @@ Siga as etapas abaixo para configurar e executar o Service Association em seu am
    git clone https://github.com/seu-usuario/service-association.git
 
 2. **Crie o Banco de Dados:**
-   - Execute o banco de dados local para o projeto, garantindo que ele esteja vazio.
-   - Configure o arquivo .env com o nome do banco de dados criado anteriormente.
+    Execute o banco de dados local para o projeto, garantindo que ele esteja vazio.
+    Configure o arquivo .env com o nome do banco de dados criado anteriormente.
 
 3. **Instale as Dependências:**
-   - Acesse a pasta do projeto no terminal:
+    Acesse a pasta do projeto no terminal:
    cd (caminho local da pasta que armazena o projeto)
 
-   - Execute os seguintes comandos:
+    Execute os seguintes comandos:
    -     npm install
    -      composer install
 
 4. **Compilação e Execução:**
-   - Para compliar os ativos front-end execute o comando abaixo no terminal:
+   Para compliar os arquivos front-end execute o comando abaixo no terminal:
    -     npm run dev
      
-   - Para iniciar o servidor Laravel execute o comando abaixo no terminal:
+   Para iniciar o servidor Laravel execute o comando abaixo no terminal:
    -     php artisan serve
 
 **Após realizar estes passos, a aplicação estará disponível em http://localhost:8000. Certifique-se de ajustar a porta conforme necessário.**    
@@ -54,7 +54,7 @@ O **Service Association** oferece diversos recursos, incluindo:
 - **Layout Responsivo:** Todo o sistema foi desenvolvido para se adaptar a diferentes dispositivos e telas.
 
  ### Tecnologias Utilizadas:
-- O projeto é desenvolvido em **Laravel**, aproveitando sua robustez e facilidade de manutenção. Adotamos boas práticas de desenvolvimento para garantir segurança e desempenho. Para estilização das telas, foi utilizado o framework Bootstrap.
+- O projeto é desenvolvido em **Laravel**, aproveitando sua robustez e facilidade de manutenção. Adotamos boas práticas de desenvolvimento para garantir segurança e desempenho. Para estilização das telas, foi utilizado o **framework Bootstrap**.
 
 
    
