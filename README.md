@@ -17,7 +17,7 @@ Siga as etapas abaixo para configurar e executar o Service Association em seu am
 
 1. **Clone o Repositório:**
    ```bash
-   git clone https://github.com/seu-usuario/service-association.git
+*        git clone https://github.com/seu-usuario/service-association.git
 
 2. **Crie o Banco de Dados:**
     Execute o banco de dados local para o projeto, garantindo que ele esteja vazio.
@@ -28,15 +28,15 @@ Siga as etapas abaixo para configurar e executar o Service Association em seu am
    cd (caminho local da pasta que armazena o projeto)
 
     Execute os seguintes comandos:
-   -     npm install
-   -      composer install
+   *     npm install
+   *      composer install
 
 4. **Compilação e Execução:**
    Para compliar os arquivos front-end execute o comando abaixo no terminal:
-   -     npm run dev
+   *     npm run dev
      
    Para iniciar o servidor Laravel execute o comando abaixo no terminal:
-   -     php artisan serve
+   *     php artisan serve
 
 **Após realizar estes passos, a aplicação estará disponível em http://localhost:8000. Certifique-se de ajustar a porta conforme necessário.**    
 
@@ -47,14 +47,14 @@ O **Service Association** possui um sistema de controle de perfis, no qual os us
 ### Recursos Principais:
 O **Service Association** oferece diversos recursos, incluindo:
 
-- **Diversidade de Serviços:** Uma ampla gama de serviços em diferentes setores.
-- **Associação Simples:** Facilidade para os usuários se associarem aos serviços desejados.
-- **Gerenciamento de Associações:** Interface intuitiva para que os usuários possam gerenciar suas associações.
-- **Controle de Perfis:** Sistema de controle de perfis, com usuários administradores e operacionais.
-- **Layout Responsivo:** Todo o sistema foi desenvolvido para se adaptar a diferentes dispositivos e telas.
+1. **Diversidade de Serviços:** Uma ampla gama de serviços em diferentes setores.
+2. **Associação Simples:** Facilidade para os usuários se associarem aos serviços desejados.
+3. **Gerenciamento de Associações:** Interface intuitiva para que os usuários possam gerenciar suas associações.
+4. **Controle de Perfis:** Sistema de controle de perfis, com usuários administradores e operacionais.
+5. **Layout Responsivo:** Todo o sistema foi desenvolvido para se adaptar a diferentes dispositivos e telas.
 
  ### Tecnologias Utilizadas:
-- O projeto é desenvolvido em **Laravel**, aproveitando sua robustez e facilidade de manutenção. Adotamos boas práticas de desenvolvimento para garantir segurança e desempenho. Para estilização das telas, foi utilizado o **framework Bootstrap**.
+O projeto é desenvolvido em **Laravel**, aproveitando sua robustez e facilidade de manutenção. Adotamos boas práticas de desenvolvimento para garantir segurança e desempenho. Para estilização das telas, foi utilizado o **framework Bootstrap**.
 
 
    
