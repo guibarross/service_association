@@ -17,7 +17,7 @@ Siga as etapas abaixo para configurar e executar o Service Association em seu am
 
 1. **Clone o Repositório:**
    ```bash
-*        git clone https://github.com/seu-usuario/service-association.git
+    git clone https://github.com/seu-usuario/service-association.git
 
 2. **Crie o Banco de Dados:**
     Execute o banco de dados local para o projeto, garantindo que ele esteja vazio.
