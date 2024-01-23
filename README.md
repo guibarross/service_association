@@ -35,6 +35,7 @@ Siga as etapas abaixo para configurar e executar o Service Association em seu am
 5. **Compilação e Execução:**
    Para compliar os arquivos front-end e iniciar o servidor Laravel, execute os comandos abaixo no terminal:
    ```bash
+   php artisan migrate
    npm run dev
    php artisan serve
 
