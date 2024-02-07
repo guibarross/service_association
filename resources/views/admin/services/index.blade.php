@@ -2,21 +2,73 @@
 
 @section('content')
     <div>
-        {{-- <div>
-        <img class="img-fluid shadow" src="{{ asset('images/banner.jpg') }}" alt="Banner de serviços">
-    </div>  --}}
-
         <div class="px-sm-5 my-5 mx-sm-5 border-0 rounded shadow-lg">
             <div class="card-header bg-transparent pb-4 pt-4">
                 <div class="d-flex justify-content-between">
                     <h3 class="mr-3">Serviços</h3>
+
+                    <!-- Button trigger modal -->
                     <div class="d-flex">
                         @if (auth()->check() && auth()->user()->is_admin === 1)
-                            <a class="btn btn-outline-primary my-2 my-sm-0" href="{{ route('services.create') }}"><i
-                                    class="bi bi-plus-square"></i> </i>Adicionar
-                                Serviço</a>
+                            <button type="button" class="btn btn-outline-primary my-2 my-sm-0" data-toggle="modal"
+                                data-target="#staticBackdrop">
+                                <i class="bi bi-plus-square"></i> </i>Adicionar
+                                Serviço
+                            </button>
                         @endif
                     </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+                        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Adicionar novo serviço</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body px-0">
+                                    <form class="mb-3 py-4" action="{{ route('services.store') }}" method="post">
+                                        @csrf
+                                        <div class="px-4 pb-4">
+                                        <div class="form-group">
+                                            <label for="">Tipo de Serviço</label>
+                                            <input type="text" class="form-control" name="title"
+                                                value="{{ old('title') }}" @required(true)>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Local do Serviço</label>
+                                            <input type="text" class="form-control" name="local"
+                                                value="{{ old('local') }}" @required(true)>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Descrição do Serviço</label>
+                                            <textarea class="form-control" name="description" rows="3" @required(true)>{{ old('description') }}</textarea>
+                                        </div>
+                                        <div>
+                                            @if ($errors->any())
+                                                @foreach ($errors->all() as $error)
+                                                    {{ $error }}
+                                                @endforeach
+                                            @endif
+                                        </div>
+                                    </div>
+                                        <hr>
+                                        <div class="d-flex justify-content-end mx-4">
+                                            <button type="button" class="btn btn-secondary mr-3"
+                                                data-dismiss="modal">Fechar</button>
+                                            <div class="d-flex justify-content-end"><button type="submit"
+                                                    class="btn btn-primary ">Cadastrar</button></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
 
                 <div class="mt-4 mt-sm-3 d-flex d-sm-block justify-content-center row">

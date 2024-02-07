@@ -28,6 +28,6 @@
                 <a class="nav-link text-white pl-0" href="/login">Entrar</a>
                 <a class="nav-link text-white pl-0" href="/register">Cadastrar</a>
             @endguest
-        </div>
+        </div>     
     </nav>
 </div>
