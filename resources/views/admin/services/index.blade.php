@@ -197,29 +197,28 @@
                             </div>
                         @endforeach
                         <!-- Modal de confirmação exclusão-->
-                        <form action="{{ route('services.destroy', $service->id) }}"
-                            method="post">
+                        <form action="{{ route('services.destroy', $service->id) }}" method="post">
                             @csrf
                             @method('delete')
                             <div class="modal fade mt-5" id="confirmationDeleteModal" tabindex="-1" role="dialog"
-                            aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content  bg-dark">
-                                    <div class="modal-body font-weigth-bold text-white">
-                                        Tem certeza de que deseja excluir
-                                        este serviço?
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                                            aria-label="Close">Cancelar</button>
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-sm" role="document">
+                                    <div class="modal-content bg-dark">
+                                        <div class="modal-body font-weigth-bold text-white">
+                                            Tem certeza de que deseja excluir
+                                            este serviço?
+                                        </div>
+                                        <div class="text-center mb-4">
+                                            <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal"
+                                                aria-label="Close">Cancelar</button>
 
-                                        <button type="submit" class="btn btn-danger" id="confirmDeleteButton">Sim,
-                                            excluir!</button>
+                                            <button type="submit" class="btn btn-danger" id="confirmDeleteButton">Sim,
+                                                excluir!</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
                         <!-- end Modal de confirmação exclusão-->
                     </div>
                 @endif
@@ -233,10 +232,12 @@
             </div>
         </div>
     </div>
+
+
     <script>
-        $(document).ready(function () {
-            $('#confirmationDeleteModal').on('shown.bs.modal', function () {
-                $('#confirmDeleteButton').click(function () {
+        $(document).ready(function() {
+            $('#confirmationDeleteModal').on('shown.bs.modal', function() {
+                $('#confirmDeleteButton').click(function() {
                     $('#delete-form').submit();
                 });
             });

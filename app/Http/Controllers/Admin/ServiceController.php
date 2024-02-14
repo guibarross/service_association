@@ -25,7 +25,7 @@ class ServiceController extends Controller
 
         $service = $service->create($data);
 
-        return redirect()->route('services.index')->with('msg', 'Serviço cadastrado com sucesso!');
+        return redirect()->route('services.index')->with('modal_msg', 'Serviço cadastrado com sucesso!');
     }
 
     public function edit(Service $service, string | int $id)
@@ -56,7 +56,7 @@ class ServiceController extends Controller
 
         $service->update($request->validated());
 
-        return redirect()->route('services.index')->with('msg', 'Serviço editado com sucesso!');
+        return redirect()->route('services.index')->with('modal_msg', 'Serviço editado com sucesso!'); 
     }
 
 
@@ -66,7 +66,7 @@ class ServiceController extends Controller
 
         if (auth()->user()->is_admin === 1) {
             $service->delete();
-            return redirect()->route('services.index')->with('msg', 'Serviço excluido com sucesso!');
+            return redirect()->route('services.index')->with('modal_msg', 'Serviço excluído com sucesso!');
         } else {
             abort(401, 'Acesso não autorizado.');
         }
@@ -88,12 +88,12 @@ class ServiceController extends Controller
         $service = $service->findOrFail($id);
 
         if ($user->associatedServices->contains($service)) {
-            return redirect()->route('services.show', ['id' => $service->id])->with('msg', 'Este serviço já foi associado.');
+            return redirect()->route('services.show', ['id' => $service->id])->with('modal_msg', 'Este serviço já foi associado.');
         }
 
         $user->associatedServices()->attach($service);
 
-        return redirect()->route('user.services', compact('user'))->with('msg', 'Serviço associado com sucesso!');
+        return redirect()->route('user.services', compact('user'))->with('modal_msg', 'Serviço associado com sucesso!');
     }
 
 

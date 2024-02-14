@@ -23,7 +23,7 @@
                     @foreach ($user->associatedServices as $service)
                         <tbody>
                             <tr>
-                                <td><a href="{{ route('services.show', $service->id) }}">{{ $service->title }}</a></td>
+                                <td><a href="{{ route('services.index', $service->id) }}">{{ $service->title }}</a></td>
                                 <td>
                                 <form action="{{ route('services.disassociation', ['id' => $service->id]) }}" method="post">
                                     @csrf

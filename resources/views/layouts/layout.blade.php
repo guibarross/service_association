@@ -21,13 +21,35 @@
 
 <body>
     @include('layouts.header')
-
-    @if (session('msg'))
-        <div class="text-center text-success py-4" style="background-color:#b8e7c8">
-            <h6 class="msg p-0 m-0">{{ session('msg') }}</h6>
-        </div>
-    @endif
+    
     @yield('content')
+     <!-- Verifica se há uma mensagem de modal e exibe o modal correspondente -->
+     @if (Session::has('modal_msg'))
+     <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel"
+         aria-hidden="true">
+         <div class="modal-dialog modal-sm" role="document">
+             <div class="modal-content" style="background-color: #61e78e">
+                 <div class="px-2 py-1">
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                         <span aria-hidden="true" class="text-success font-weight-bolder">&times;</span>
+                     </button>
+                 </div>
+                 <div class="pb-4 text-center text-success font-weight-bolder">
+                     {{ Session::get('modal_msg') }}
+                 </div>
+             </div>
+         </div>
+     </div>
+     <script>
+         $(document).ready(function() {
+             $('#successModal').modal('show');
+            
+             setTimeout(function() {
+                 $('#successModal').modal('hide');
+             }, 3500);
+         });
+     </script>
+ @endif
     @include('layouts.footer')
 
 
