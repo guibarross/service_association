@@ -105,128 +105,122 @@
                                         <p class="card-text"><i class="bi bi-geo-alt"></i> {{ $service->local }}</p>
                                     </div>
 
-                                    {{--  <a href="{{ route('services.show', $service->id) }}"
-                                        class="d-flex justify-content-end px-3 pb-3" data-bs-toggle="tooltip"
-                                        title="Visualizar">
-                                        <i class="bi bi-eye"></i>
-                                    </a> --}}
-
                                     <!-- Button modal adicionar novo serviço-->
                                     <a class="d-flex justify-content-end px-3 pb-3" type="button" data-toggle="modal"
-                                        data-target="#verDetalhes" data-bs-toggle="tooltip" title="Visualizar">
+                                        data-target="#verDetalhes_{{ $service->id }}"data-bs-toggle="tooltip"
+                                        title="Visualizar">
                                         <i class="bi bi-eye"></i>
                                     </a>
-
-
-                                    <!-- Modal ver detalhes-->
-                                    <div class="modal fade shadow rounded" id="verDetalhes" data-backdrop="static"
-                                        data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                        aria-hidden="true">
-                                        <div class="modal-dialog modal-lg">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="">Detalhes do serviço</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="d-flex justify-content-center my-4 mx-3">
-                                                        <div class="my-3 ">
-                                                            <div class="card border-0 shadow rounded mb-3"
-                                                                style="max-width: 40rem;">
-                                                                <div class="card-header text-center py-3">
-                                                                    <h5 class="card-title mb-0">{{ $service->title }}</h5>
-                                                                </div>
-                                                                <div class="card-body">
-                                                                    <p class="card-text">{{ $service->description }}</p>
-                                                                </div>
-                                                                <hr class="m-0">
-                                                                <div class="card-body bg-light">
-                                                                    <p class="card-text"><i class="bi bi-geo-alt"></i>
-                                                                        {{ $service->local }}</p>
-                                                                </div>
+                                </div>
+                                <!-- Modal ver detalhes do serviço-->
+                                <div class="modal fade shadow rounded" id="verDetalhes_{{ $service->id }}"
+                                    data-backdrop="static" data-keyboard="false" tabindex="-1"
+                                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="">Detalhes do serviço</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="d-flex justify-content-center my-4 mx-3">
+                                                    <div class="my-3 ">
+                                                        <div class="card border-0 shadow rounded mb-3"
+                                                            style="max-width: 40rem;">
+                                                            <div class="card-header text-center py-3">
+                                                                <h5 class="card-title mb-0">{{ $service->title }}</h5>
                                                             </div>
+                                                            <div class="card-body">
+                                                                <p class="card-text">{{ $service->description }}</p>
+                                                            </div>
+                                                            <hr class="m-0">
+                                                            <div class="card-body bg-light">
+                                                                <p class="card-text"><i class="bi bi-geo-alt"></i>
+                                                                    {{ $service->local }}</p>
+                                                            </div>
+                                                        </div>
 
-                                                            @if (auth()->check() && auth()->user()->is_admin != 1)
-                                                                <form
-                                                                    action="{{ route('services.associate', ['id' => $service->id]) }}"
-                                                                    method="post">
-                                                                    @csrf
-                                                                    <div>
-                                                                        <button type="submit"
-                                                                            class="btn btn-outline-primary py-0 mt-2">Me
-                                                                            associar a este
-                                                                            serviço</button>
-                                                                    </div>
-                                                                </form>
+                                                        @if (auth()->check() && auth()->user()->is_admin != 1)
+                                                            <form
+                                                                action="{{ route('services.associate', ['id' => $service->id]) }}"
+                                                                method="post">
+                                                                @csrf
+                                                                <div>
+                                                                    <button type="submit"
+                                                                        class="btn btn-outline-primary py-0 mt-2">Me
+                                                                        associar a este
+                                                                        serviço</button>
+                                                                </div>
+                                                            </form>
+                                                        @endif
+
+                                                        <div class="d-md-flex justify-content-right">
+                                                            @if (auth()->check() && auth()->user()->is_admin === 1)
+                                                                <div class="mr-md-2">
+                                                                    <a href="{{ route('user.associated', ['serviceId' => $service->id]) }}"
+                                                                        class="btn btn-outline-primary btn-block py-0 mt-2 mr-2">Usuários
+                                                                        associados</a>
+                                                                </div>
+                                                                <div class="mr-md-2">
+                                                                    <a href="{{ route('services.edit', $service->id) }}"
+                                                                        class="btn btn-outline-primary btn-block py-0 mt-2 mr-2">Editar
+                                                                        serviço</a>
+                                                                </div>
                                                             @endif
-
-                                                            <div class="d-md-flex justify-content-right">
+                                                            <form action="{{ route('services.destroy', $service->id) }}"
+                                                                method="post">
+                                                                @csrf
+                                                                @method('delete')
                                                                 @if (auth()->check() && auth()->user()->is_admin === 1)
-                                                                    <div class="mr-md-2">
-                                                                        <a href="{{ route('user.associated', ['serviceId' => $service->id]) }}"
-                                                                            class="btn btn-outline-primary btn-block py-0 mt-2 mr-2">Usuários
-                                                                            associados</a>
-                                                                    </div>
-                                                                    <div class="mr-md-2">
-                                                                        <a href="{{ route('services.edit', $service->id) }}"
-                                                                            class="btn btn-outline-primary btn-block py-0 mt-2 mr-2">Editar
-                                                                            serviço</a>
-                                                                    </div>
+                                                                    <button type="button"
+                                                                        class="btn btn-outline-danger btn-block py-0 mt-2 mr-2"
+                                                                        data-toggle="modal"
+                                                                        data-target="#confirmationDeleteModal">Excluir
+                                                                        serviço</button>
                                                                 @endif
-                                                                <form
-                                                                    action="{{ route('services.destroy', $service->id) }}"
-                                                                    method="post">
-                                                                    @csrf
-                                                                    @method('delete')
-                                                                    @if (auth()->check() && auth()->user()->is_admin === 1)
-                                                                        <button type="button"
-                                                                            class="btn btn-outline-danger btn-block py-0 mt-2 mr-2"
-                                                                            onclick="confirmDelete()">Excluir
-                                                                            serviço</button>
-
-                                                                        <!-- Modal de confirmação -->
-                                                                        <div class="modal fade mt-5" id="confirmationModal"
-                                                                            tabindex="-1" role="dialog"
-                                                                            aria-labelledby="confirmationModalLabel"
-                                                                            aria-hidden="true">
-                                                                            <div class="modal-dialog" role="document">
-                                                                                <div class="modal-content  bg-dark">
-                                                                                    <div class="modal-body font-weigth-bold text-white">
-                                                                                        Tem certeza de que deseja excluir
-                                                                                        este serviço?
-                                                                                    </div>
-                                                                                    <div class="modal-footer">
-                                                                                        <button type="button"
-                                                                                            class="btn btn-secondary"
-                                                                                            data-dismiss="modal">Cancelar</button>
-                                                                                        <button type="submit"
-                                                                                            class="btn btn-danger"
-                                                                                            onclick="submitDeleteForm()">Sim, excluir!</button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    @endif
-                                                                </form>
-                                                            </div>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-dismiss="modal">Fechar</button>
-                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Fechar</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- end modal ver detalhes-->
-                                    
                                 </div>
+                                <!-- end modal ver detalhes do serviço-->
                             </div>
                         @endforeach
+                        <!-- Modal de confirmação exclusão-->
+                        <form action="{{ route('services.destroy', $service->id) }}"
+                            method="post">
+                            @csrf
+                            @method('delete')
+                            <div class="modal fade mt-5" id="confirmationDeleteModal" tabindex="-1" role="dialog"
+                            aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content  bg-dark">
+                                    <div class="modal-body font-weigth-bold text-white">
+                                        Tem certeza de que deseja excluir
+                                        este serviço?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                            aria-label="Close">Cancelar</button>
+
+                                        <button type="submit" class="btn btn-danger" id="confirmDeleteButton">Sim,
+                                            excluir!</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                        <!-- end Modal de confirmação exclusão-->
                     </div>
                 @endif
                 <hr>
@@ -239,14 +233,14 @@
             </div>
         </div>
     </div>
-    <!-- Script do modal confirmar exclusão -->
     <script>
-        function confirmDelete() {
-            $('#confirmationModal').modal('show');
-        }
-
-        function submitDeleteForm() {
-            $('#delete-form').submit();
-        }
+        $(document).ready(function () {
+            $('#confirmationDeleteModal').on('shown.bs.modal', function () {
+                $('#confirmDeleteButton').click(function () {
+                    $('#delete-form').submit();
+                });
+            });
+        });
     </script>
+
 @endsection

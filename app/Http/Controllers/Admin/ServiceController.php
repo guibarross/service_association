@@ -19,25 +19,6 @@ class ServiceController extends Controller
         return view('admin\services\index', compact('services'));
     }
 
-    public function show(string|int $id)
-    {
-        if (!$service = Service::find($id)) {
-            return back();
-        }
-
-        return view('admin\services\show', compact('service'));
-    }
-
-
-    public function create()
-    {
-        if (auth()->user()->is_admin === 1) {
-            return view('admin\services\create');
-        } else {
-            abort(401, 'Acesso não autorizado.');
-        }
-    }
-
     public function store(StoreUpdateService $request, Service $service)
     {
         $data = $request->validated();
