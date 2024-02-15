@@ -20,14 +20,21 @@ class StoreUpdateService extends FormRequest
      */
     public function rules(): array
     {
-        $rules = [   
+        return [   
                 'title' => ['required','min:3','max:255'],
 
                 'local' => ['required','min:3','max:255'],
 
                 'description' => ['required','min:3','max:10000'],
             ];
-
-        return $rules;
     }
+
+    public function messages(): array
+    {
+        return [
+            'title.required' => 'O campo Tipo de Serviço é obrigatório.',
+            'local.required' => 'O campo Local do Serviço é obrigatório.',
+            'description.required' => 'O campo Descrição do Serviço é obrigatório.',
+        ];
+    } 
 }

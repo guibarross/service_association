@@ -56,7 +56,7 @@ class ServiceController extends Controller
 
         $service->update($request->validated());
 
-        return redirect()->route('services.index')->with('modal_msg', 'Serviço editado com sucesso!'); 
+        return redirect()->route('services.index')->with('modal_msg', 'Serviço editado com sucesso!');
     }
 
 
@@ -144,17 +144,17 @@ class ServiceController extends Controller
     public function search(Request $request)
     {
         $query = $request->input('query');
-    
+
         $services = Service::query();
-    
+
         if ($query) {
             $services = $services->where('title', 'LIKE', "%$query%")
-                                ->orWhere('description', 'LIKE', "%$query%")
-                                ->orWhere('local', 'LIKE', "%$query%");
+                ->orWhere('description', 'LIKE', "%$query%")
+                ->orWhere('local', 'LIKE', "%$query%");
         }
-    
+
         $services = $services->get();
-    
+
         return view('admin.services.index', compact('services', 'query'));
     }
 }

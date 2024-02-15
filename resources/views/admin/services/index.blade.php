@@ -36,23 +36,27 @@
                                             <div class="form-group">
                                                 <label for="">Tipo de Serviço</label>
                                                 <input type="text" class="form-control" name="title"
-                                                    value="{{ old('title') }}" @required(true)>
+                                                    value="{{ old('title') }}" required>
+                                                @error('title')
+                                                    <small class="text-danger">{{ $message }}</small>
+                                                @enderror
                                             </div>
+
                                             <div class="form-group">
                                                 <label for="">Local do Serviço</label>
                                                 <input type="text" class="form-control" name="local"
-                                                    value="{{ old('local') }}" @required(true)>
+                                                    value="{{ old('local') }}" required>
+                                                @error('local')
+                                                    <small class="text-danger">{{ $message }}</small>
+                                                @enderror
                                             </div>
+
                                             <div class="form-group">
                                                 <label for="">Descrição do Serviço</label>
-                                                <textarea class="form-control" name="description" rows="3" @required(true)>{{ old('description') }}</textarea>
-                                            </div>
-                                            <div>
-                                                @if ($errors->any())
-                                                    @foreach ($errors->all() as $error)
-                                                        {{ $error }}
-                                                    @endforeach
-                                                @endif
+                                                <textarea class="form-control" name="description" rows="3" required>{{ old('description') }}</textarea>
+                                                @error('description')
+                                                    <small class="text-danger">{{ $message }}</small>
+                                                @enderror
                                             </div>
                                         </div>
                                         <hr>
